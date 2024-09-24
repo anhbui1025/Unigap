@@ -1,0 +1,31 @@
+Question 1:
+
+Question 2:
+Em sẽ xác định 
+
+Question 3:
+
+Question 4:
+select count( distinct client_id), count(order_id) 
+from order
+order by month(date_order)
+
+select client_id, 
+from order
+where count(order_id) > 10
+group by client_id
+having year(date_order) = year(current_date)
+
+select top 2, date_order, good_type, good_amount 
+from order
+order by date_order asc
+
+select count(o.order_id), sum(o.good_amount)
+from order o
+join order_delivery od
+on o.order_id = od.order_id 
+where date_delivery like ‘*Sep.2019*’
+
+Question 5:
+
+
