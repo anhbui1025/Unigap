@@ -1,30 +1,40 @@
 Question 1:
 
 Question 2:
-Em sẽ xác định 
+ 
 
 Question 3:
 
 Question 4:
-select count( distinct client_id), count(order_id) 
+a) select count( distinct client_id), count(order_id) 
 from order
 order by month(date_order)
 
-select client_id, 
+b) select client_id, 
 from order
 where count(order_id) > 10
 group by client_id
 having year(date_order) = year(current_date)
 
-select top 2, date_order, good_type, good_amount 
+c) select top 2, date_order, good_type, good_amount 
 from order
 order by date_order asc
 
-select count(o.order_id), sum(o.good_amount)
+d) select count(o.order_id), sum(o.good_amount)
 from order o
 join order_delivery od
 on o.order_id = od.order_id 
 where date_delivery like ‘*Sep.2019*’
+
+e) 
+- Sử dụng Execution Plan để xác định phần nặng nhất của truy vấn và tập trung tối ưu những phần đó.
+- Cân nhắc tạo bảng trung gian cho các truy vấn phức tạp (sử dụng CTE thay vì subqueries).
+- Chỉ định tên cột thay vì sử dụng SELECT. 
+- Thay thế LEFT JOIN bằng JOIN nếu có thể. 
+- Sử dụng UNION ALL thay vì UNION. Hạn chế sử dụng EXISTS với các tập dữ liệu lớn; thay vào đó hãy sử dụng INNER JOIN. 
+- Tránh sử dụng hàm trong mệnh đề WHERE, ví dụ: station_code LIKE 'HNI%' (TỐT) tốt hơn SUBSTR(station_code, 1, 3) = 'HNI' (KHÔNG TỐT). 
+- Giảm thiểu việc sử dụng DISTINCT với các bảng lớn; thay vào đó hãy sử dụng GROUP BY. 
+- Hạn chế sử dụng For Loops: Tránh sử dụng vòng lặp với các tập dữ liệu lớn.
 
 Question 5:
 
