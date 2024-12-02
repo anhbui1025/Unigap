@@ -1,0 +1,11 @@
+1. Sắp xếp các bộ phim theo ngày phát hành giảm dần rồi lưu ra một file mới
+(head -n 1 movies.csv && tail -n +2 movies.csv | sort -t',' -k15,15) > sorted_movies.csv.
+2. Lọc ra các bộ phim có đánh giá trung bình trên 7.5 rồi lưu ra một file mới
+mlr --csv filter '$vote_average > 7.5' tmdb-movies.csv > high_rated_movies.csv
+3. Tìm ra phim nào có doanh thu cao nhất và doanh thu thấp nhất
+mlr --csv sort -n revenue_adj tmdb-movies.csv | head -n 2 > highest_lowest_movies.csv 
+mlr --csv sort -nr revenue_adj tmdb-movies.csv | head -n 2 >> highest_lowest_movies.csv
+4. Tính tổng doanh thu tất cả các bộ phim
+mlr --csv stats1 -a sum -f revenue tmdb-movies.csv > total_revenue.csv
+5. Top 10 bộ phim đem về lợi nhuận cao nhất
+mlr --csv sort -nr revenue tmdb-movies.csv | head -n 11 >> revenue_highest_movies.csv
